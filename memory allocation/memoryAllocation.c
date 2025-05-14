@@ -7,7 +7,7 @@ void firstFit(int blockSize[], int b, int processSize[], int f) {
 
     for (int i = 0; i < f; i++) {
         for (int j = 0; j < b; j++) {
-            if (blockSize[j] >= processSize[i]) {
+            if (blockSize[j] >= processSize[i] && allocation[i]==-1) {
                 allocation[i] = j;
                 break;
             }
@@ -33,7 +33,7 @@ void bestFit(int blockSize[], int b, int processSize[], int f) {
     for (int i = 0; i < f; i++) {
         int bestIdx = -1;
         for (int j = 0; j < b; j++) {
-            if (blockSize[j] >= processSize[i]) {
+            if (blockSize[j] >= processSize[i] && allocation[i]==-1) {
                 if (bestIdx == -1 || blockSize[j] < blockSize[bestIdx])
                     bestIdx = j;
             }
@@ -63,7 +63,7 @@ void worstFit(int blockSize[], int b, int processSize[], int f) {
     for (int i = 0; i < f; i++) {
         int worstIdx = -1;
         for (int j = 0; j < b; j++) {
-            if (blockSize[j] >= processSize[i]) {
+            if (blockSize[j] >= processSize[i] && allocation[i]==-1) {
                 if (worstIdx == -1 || blockSize[j] > blockSize[worstIdx])
                     worstIdx = j;
             }
